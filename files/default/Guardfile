@@ -24,6 +24,8 @@ end
 guard :rspec, cmd: 'chef exec rspec', all_on_start: true, notification: true, spec_paths: ['test/unit/']do
   watch(/^libraries\/(.+)\.rb$/)
   watch(/^test\/unit\/spec\/(.+)_spec\.rb$/)
-  watch(/^(recipes)\/(.+)\.rb$/)   { |m| "spec/#{m[1]}_spec.rb" }
+  watch(/^(recipes)\/(.+)\.rb$/)             { |m| "spec/#{m[1]}_spec.rb" }
   watch('test/unit/spec/spec_helper.rb')     { 'test/unit/spec' }
+  watch('metadata.rb')                       { 'test/unit/spec' }
+  watch('Berksfile')                         { 'test/unit/spec' }
 end
