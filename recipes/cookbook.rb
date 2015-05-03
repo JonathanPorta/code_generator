@@ -48,15 +48,15 @@ template "#{cookbook_dir}/test/integration/default/serverspec/default_spec.rb" d
 end
 
 # Chefspec
-directory "#{cookbook_dir}/spec/unit/recipes" do
+directory "#{cookbook_dir}/test/unit/spec/recipes" do
   recursive true
 end
 
-cookbook_file "#{cookbook_dir}/spec/spec_helper.rb" do
+cookbook_file "#{cookbook_dir}/test/unit/spec/spec_helper.rb" do
   action :create_if_missing
 end
 
-template "#{cookbook_dir}/spec/unit/recipes/default_spec.rb" do
+template "#{cookbook_dir}/test/unit/spec/recipes/default_spec.rb" do
   source "recipe_spec.rb.erb"
   helpers(ChefDK::Generator::TemplateHelper)
   action :create_if_missing

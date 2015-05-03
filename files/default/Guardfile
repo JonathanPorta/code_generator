@@ -17,10 +17,11 @@ guard 'rubocop', cmd: 'chef exec rubocop' do
   watch(/recipes\/.+\.rb$/)
   watch(/resources\/.+\.rb$/)
   watch(/libraries\/.+\.rb$/)
+  watch(/test\/.+\.rb$/)
   watch('metadata.rb')
 end
 
-guard :rspec, cmd: 'chef exec rspec', all_on_start: false, notification: true do
+guard :rspec, cmd: 'chef exec rspec', all_on_start: false, notification: true, spec_paths: ['test/unit/']do
   watch(/^libraries\/(.+)\.rb$/)
   watch(/^spec\/(.+)_spec\.rb$/)
   watch(/^(recipes)\/(.+)\.rb$/)   { |m| "spec/#{m[1]}_spec.rb" }
