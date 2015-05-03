@@ -86,3 +86,23 @@ if context.have_git
     source "gitignore"
   end
 end
+
+template "#{cookbook_dir}/LICENSE" do
+  source 'LICENSE.wtfpl.erb'
+  helpers(ChefDK::Generator::TemplateHelper)
+end
+
+# Rakefile
+cookbook_file "#{cookbook_dir}/Rakefile"
+
+# Guardfile
+cookbook_file "#{cookbook_dir}/Guardfile"
+
+# Gemfile
+cookbook_file "#{cookbook_dir}/Gemfile"
+
+# .travis.yml
+cookbook_file "#{cookbook_dir}/.travis.yml"
+
+# .rubocop.yml
+cookbook_file "#{cookbook_dir}/.rubocop.yml"
